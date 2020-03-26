@@ -1,0 +1,7 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+<qresource prefix="/">
+   <file alias="text_window.qml">ui/text_window.qml</file>
+   <file alias="heart.svg">ui/images/heart.svg</file>
+</qresource>
+</RCC>
