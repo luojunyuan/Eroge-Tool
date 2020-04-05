@@ -1,15 +1,15 @@
 import QtQuick 1.1
-import QtDesktop 0.1 as Desktop
-import eroge.tool 0.1 as Plugin
+// import QtDesktop 0.1 as Desktop
+// import eroge.tool 0.1 as Plugin
 import 'TextWindow'
-import '../lib/QtPlugin/texscript' as TexScript
+import 'lib/QtPlugin/texscript' as TexScript
 Item {
     id: root
 
     // If you fon't set full screen in python, it will show 800*600 by default
     implicitWidth: 800
     implicitHeight: 600
-    TexScript.TexHtmlParser {}
+    // TexScript.TexHtmlParser {}
 //    property bool ignoresFocus: dock_.ignoresFocusChecked && gameProxy_.fullScreen
 
 

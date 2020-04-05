@@ -2,23 +2,25 @@ from qtpy.QtWidgets import QGraphicsBlurEffect, QGraphicsColorizeEffect, QGraphi
     QGraphicsOpacityEffect
 from PySide.QtDeclarative import qmlRegisterType
 
+from text import TextManagerQMLPlugin
 
 _QML_EFFECT = 'QtEffects'
 _QML_PLUGIN = 'eroge.tool'
 
 
 def reg(cls, component):
-    qmlRegisterType(cls, _QML_EFFECT, 0, 1, component)
+    qmlRegisterType(cls, _QML_PLUGIN, 1, 0, component)
 
 
 def register_qml_type():
+    reg(TextManagerQMLPlugin, 'ReciveText')
     # See: http://stackoverflow.com/questions/8894244/qml-and-blurring-image
-    reg(QGraphicsBlurEffect, 'Blur')
-    reg(QGraphicsColorizeEffect, 'Colorize')
-    reg(QGraphicsDropShadowEffect, 'DropShadow')
-    reg(QGraphicsOpacityEffect, 'Opacity')
+    # reg(QGraphicsBlurEffect, 'Blur')
+    # reg(QGraphicsColorizeEffect, 'Colorize')
+    # reg(QGraphicsDropShadowEffect, 'DropShadow')
+    # reg(QGraphicsOpacityEffect, 'Opacity')
 
-qmlRegisterType(QGraphicsBlurEffect, _QML_EFFECT, 0, 1, 'Blur')
+# qmlRegisterType(QGraphicsBlurEffect, _QML_EFFECT, 0, 1, 'Blur')
 # qmlRegisterType(main.MainObjectProxy, _QML_PLUGIN, 1, 0, 'MainObjectProxy')
 # qmlRegisterType(gameman.GameWindowProxy, _QML_PLUGIN, 1, 0, 'GameWindowProxy')
 

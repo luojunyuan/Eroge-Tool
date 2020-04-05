@@ -1,4 +1,4 @@
-import sys
+import os
 
 from PySide.QtDeclarative import QDeclarativeView, qmlRegisterType
 from qtpy.QtCore import Qt, Slot
@@ -8,6 +8,7 @@ from qtpy.QtWidgets import QApplication, QMainWindow, QGraphicsColorizeEffect, Q
 from ui.process_select import ProcessSelectPage
 from ui.text_select import TextPrefDialog
 from ui.tray import TrayIcon
+from text import TextManagerQMLPlugin
 from utils import Logger
 import resource
 
@@ -48,10 +49,15 @@ class MainWindow(QMainWindow):
 
     @Slot()
     def text_display(self):
-        _register()
-        self.view.engine().addImportPath('ui/lib')
+        # _register()
+        # from qmlregister import register_qml_type
+        # register_qml_type()
+        # need to test qmlRegisterType once more
 
-        self.view.setSource(':ui/text_window.qml')
+        self.view.engine().addImportPath('ui/lib')
+        self.view.engine().addImportPath('ui/imports')
+
+        self.view.setSource('ui/main.qml')
         self.view.setAttribute(Qt.WA_TranslucentBackground)
         self.view.setStyleSheet("background-color:transparent")
         self.view.setWindowFlags(Qt.SplashScreen | Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)
@@ -60,8 +66,9 @@ class MainWindow(QMainWindow):
 
 if __name__ == '__main__':
     app = QApplication([])
+    qmlRegisterType(TextManagerQMLPlugin, 'eroge.tool', 1, 0, 'ReciveText')
 
     win = MainWindow()
     win.show()
 
-    sys.exit(app.exec_())
+    os._exit(app.exec_())

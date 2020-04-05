@@ -40,5 +40,18 @@ class TextManager(QObject):
 
         if index == '-1':
             return
+        if self.cur_thread != '-1' and self.cur_thread == index:
+            debug('text send emit!')
+            TextManagerQMLPlugin.instance.showText.emit(text)
 
         self.sendTexts.emit(index, code, text)
+
+
+class TextManagerQMLPlugin(QObject):
+    instance = None
+    showText = Signal(str)
+
+    def __init__(self):
+        super().__init__()
+        TextManagerQMLPlugin.instance = self
+        print('yesssss')

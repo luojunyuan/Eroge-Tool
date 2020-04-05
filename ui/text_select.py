@@ -57,6 +57,7 @@ class TextThreadView(QWidget):
     def notify_selected(self):
         debug(f'text No.{self.index} is selected')
         self.parent.textSelected.emit(self.index)
+        TextManager.instance().cur_thread = self.index
 
     def set_text(self, text):
         self.textEdit.setPlainText(text)
